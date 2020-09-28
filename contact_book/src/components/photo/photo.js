@@ -1,22 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Photo = ({ src }) => {
-   const styles = {
-       heigth: "20px",
-       outline: "none"
-    //    width: "20px"
-   }
-    return (
-        <div className="d-flex justify-content-between">
-            <img className="img-thumbnail" src={src} alt="..." />
-       <button className="btn" onClick={Delete()} style={styles}><i class="fas fa-times"></i></button>
-        </div>
-    )
+export default class Photo extends Component {
+    render() {
+        const { src, onDbDelete } = this.props;
+        return (
+            <header>
+                <img className="img-thumbnail" src={src} alt="..." />
+                <a className="btn btn-outline-secondary float-right mt-3" onClick={onDbDelete}><i class="fas fa-times"></i></a>
+            </header>
+        )
+    }
 }
 
-function Delete(event)
-{
+function Delete(event) {
 
 }
-
-export default Photo;

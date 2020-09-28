@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Card from '../card'
 
-const CardList = ({ data }) => {
-    console.log(data);
-    const cards = data.map(item => {
-        console.log(item);
-        return <Card data={item} />;
-    })
+export default class CardList extends Component {
+    render() {
+        const { data, onDbDelete } = this.props;
+        const cards = data.map(item => {
+            console.log(item);
+            return <Card data={item} onDbDelete={(id) => onDbDelete(item.id)}/>;
+        })
 
-    return (
-        <>
-            {cards};
-        </>
-    )
+        return (
+            <>
+                {cards}
+            </>
+        )
+    }
 }
-
-export default CardList;
