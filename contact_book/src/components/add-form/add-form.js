@@ -10,8 +10,18 @@ export default class AddForm extends Component {
     }
     onAdd = (event) => {
         event.preventDefault();
-        this.props.onAdd(this.state.name, this.state.surname, this.state.phone, this.state.email);
-        this.setState({ name: "", surname: "", phone="", email: "" })
+
+        let name = this.state.name;
+        let surname = this.state.surname;
+        let phone = this.state.phone;
+        let email = this.state.email;
+        this.props.onAdd(name, surname, phone, email);
+        name = surname = phone = email = '';
+        this.setState((state)=> {return {
+            name, surname, phone, email
+        //   const newItem = { name: '', surname: '', phone='', email: '' };
+        //  return {name: 'df'}
+        };})
 
     }
 
@@ -31,11 +41,11 @@ export default class AddForm extends Component {
     render() {
         return (
             <>
-                <form className="align-items-center d-flex">
-                    <input onChange={this.onNameChange} value={this.state.text} className="form-control" placeholder="Enter name" />
-                    <input onChange={this.onSurnameChange} value={this.state.text} className="form-control" placeholder="Enter surname" />
-                    <input onChange={this.onPhoneChange} value={this.state.text} className="form-control" placeholder="Enter phone" />
-                    <input onChange={this.onEmailChange} value={this.state.text} className="form-control" placeholder="Enter email" />
+                <form className="align-items-center">
+                    <input onChange={this.onNameChange} value={this.state.name} className="form-control m-2" placeholder="Enter name" />
+                    <input onChange={this.onSurnameChange} value={this.state.surname} className="form-control m-2" placeholder="Enter surname" />
+                    <input onChange={this.onPhoneChange} value={this.state.phone} className="form-control m-2" placeholder="Enter phone" />
+                    <input onChange={this.onEmailChange} value={this.state.email} className="form-control m-2" placeholder="Enter email" />
                     <button className="btn btn-danger" onClick={this.onAdd}>Add</button>
                 </form>
             </>

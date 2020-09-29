@@ -1,0 +1,8 @@
+.selected {
+    box-shadow: 1px 1px 7px 1px #a5a5a5;
+    background-color: #f4eaff;
+}
+
+.custom-card {
+    background-color: rgb(238, 243, 255);
+}
